@@ -1,0 +1,11 @@
+{
+	"dbURL": "mongodb://127.0.0.1/Strava",
+	"db": "Strava",
+	"port": "4300",
+	"redisConnection": {
+		"redis": {
+			"host": "127.0.0.1",
+			"port": 6379
+		}
+	}
+}
