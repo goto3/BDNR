@@ -7,28 +7,34 @@ const validDateFormats = config.get("validDateFormats");
 const database = require("../database/handler");
 
 const JoiValidationError = require("../errors/joiValidationError");
+const DeferBindingError = require("../errors/deferBindingError");
 
-const objectValidator = {
+var validatorObject = {
 	type: Joi.string().required(),
 	userId: Joi.objectId().strict().required(),
 	date: Joi.date().format(validDateFormats).required(),
 	title: Joi.string().min(1).max(100).required(),
-	additionalData: {
-		url: Joi.string().min(1).required(),
-		comment: Joi.string().min(1).required(),
-	},
 };
 
-async function create(data) {
+module.exports.create = async (data) => {
+	setValidatorObject(data.type);
 	validate(data);
-	const activity = _.pick(data, Object.keys(objectValidator));
+	const activity = _.pick(data, Object.keys(validatorObject));
 	const result = await database.saveActivity(activity);
 	return result;
-}
+};
 
 function validate(data) {
-	const { error } = Joi.object(objectValidator).validate(data);
+	const { error } = Joi.object(validatorObject).validate(data);
 	if (error) throw new JoiValidationError(error);
 }
 
-module.exports.create = create;
+function setValidatorObject(type) {
+	try {
+		if (type == "abstractActivity") throw new DeferBindingError(`Activity.type cannot be 'abstractActivity'`);
+		const typeValidator = require(`./activities/${type}`);
+		validatorObject = { ...validatorObject, ...typeValidator };
+	} catch (err) {
+		throw new DeferBindingError(`'${type}' is not a valid 'Activity.type'.`);
+	}
+}

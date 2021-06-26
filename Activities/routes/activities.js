@@ -2,10 +2,10 @@ const express = require("express");
 const router = express.Router();
 const timeout = require("../middleware/timeout");
 
-const { createActivity } = require("../models/deferBinding");
+const AbstractActivity = require("../models/abstractActivity");
 
 router.post("/", [timeout], async (req, res) => {
-	const result = await createActivity(req.body);
+	const result = await AbstractActivity.create(req.body);
 	res.json(result);
 });
 
