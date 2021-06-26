@@ -6,11 +6,6 @@ const dbName = config.get("db");
 
 var _db;
 
-const getDb = async () => {
-	if (!_db) await connectDatabase();
-	return _db;
-};
-
 const connectDatabase = async () => {
 	const options = {
 		useNewUrlParser: true,
@@ -19,10 +14,19 @@ const connectDatabase = async () => {
 	try {
 		const client = new MongoClient(dbURL, options);
 		_db = (await client.connect()).db(dbName);
-		console.log(`MongoDb: Connected to ${dbURL}.`);
+		await createCollections();
+		return _db;
 	} catch (err) {
 		console.log("Error connecting to mongodb database.", err);
 	}
+	console.log(`MongoDb: Connected to ${dbURL}.`);
 };
 
-module.exports.getDb = getDb;
+async function createCollections() {
+	try {
+		(await _db.createCollection("activities")).createIndex({ userId: 1 });
+		(await _db.createCollection("gpsdata")).createIndex({ activityId: 1 });
+	} catch (err) {}
+}
+
+module.exports.getDb = async () => _db ?? (await connectDatabase());

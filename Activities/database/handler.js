@@ -13,6 +13,27 @@ module.exports.saveGpsData = async (data) => {
 	return result.ops[0];
 };
 
+module.exports.findAllActivities = async () => {
+	const _db = await db.getDb();
+	return await _db.collection("activities").find().toArray();
+};
+
+module.exports.findActivitiesbyUser = async (data) => {
+	const _db = await db.getDb();
+	return await _db
+		.collection("activities")
+		.find({ userId: new mongo.ObjectID(data) })
+		.toArray();
+};
+
+module.exports.findAllGpsData = async (data) => {
+	const _db = await db.getDb();
+	return await _db
+		.collection("gpsdata")
+		.find({ activityId: new mongo.ObjectID(data) })
+		.toArray();
+};
+
 module.exports.findActiveActivity = async (data) => {
 	const _db = await db.getDb();
 	return await _db.collection("activities").findOne({ _id: new mongo.ObjectID(data), type: "automaticExercise", "additionalData.inProgress": true });
