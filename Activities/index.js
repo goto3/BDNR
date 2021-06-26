@@ -1,5 +1,6 @@
 const express = require("express");
 const config = require("config");
+require("express-async-errors");
 const app = express();
 
 require("./start/routes")(app);
