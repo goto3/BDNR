@@ -33,7 +33,7 @@ function setValidatorObject(type) {
 	try {
 		if (type == "abstractActivity") throw new DeferBindingError(`Activity.type cannot be 'abstractActivity'`);
 		const typeValidator = require(`./activities/${type}`);
-		validatorObject = { ...validatorObject, ...typeValidator };
+		validatorObject = { ...validatorObject, additionalData: { ...typeValidator } };
 	} catch (err) {
 		throw new DeferBindingError(`'${type}' is not a valid 'Activity.type'.`);
 	}
