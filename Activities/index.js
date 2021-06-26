@@ -4,7 +4,6 @@ require("express-async-errors");
 const app = express();
 
 require("./start/routes")(app);
-require("./start/db")();
 require("./lib/bull/mq");
 
 const port = process.env.PORT || config.get("port");
