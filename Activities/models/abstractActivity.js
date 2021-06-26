@@ -3,7 +3,7 @@ const Joi = require("Joi").extend(require("@joi/date"));
 Joi.objectId = require("joi-objectid")(Joi);
 const _ = require("lodash");
 const moment = require("moment");
-const mongo = require("mongodb");
+const mq = require("../lib/bull/mq");
 
 const validDateFormats = config.get("validDateFormats");
 const database = require("../database/handler");
@@ -24,6 +24,7 @@ module.exports.create = async (data) => {
 	data.date = moment(data.date, validDateFormats).toDate();
 	const activity = _.pick(data, Object.keys(validatorObject));
 	const result = await database.saveActivity(activity);
+	mq.pubActivityCreated(event);
 	return result;
 };
 
