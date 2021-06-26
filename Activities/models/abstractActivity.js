@@ -2,6 +2,7 @@ const config = require("config");
 const Joi = require("Joi").extend(require("@joi/date"));
 Joi.objectId = require("joi-objectid")(Joi);
 const _ = require("lodash");
+const moment = require("moment");
 
 const validDateFormats = config.get("validDateFormats");
 const database = require("../database/handler");
@@ -19,6 +20,7 @@ var validatorObject = {
 module.exports.create = async (data) => {
 	setValidatorObject(data.type);
 	validate(data);
+	data.date = moment(data.date, validDateFormats).toDate();
 	const activity = _.pick(data, Object.keys(validatorObject));
 	const result = await database.saveActivity(activity);
 	return result;
