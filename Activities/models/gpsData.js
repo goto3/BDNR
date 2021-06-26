@@ -1,5 +1,5 @@
 const config = require("config");
-const Joi = require("Joi").extend(require("@joi/date"));
+const Joi = require("joi").extend(require("@joi/date"));
 Joi.objectId = require("joi-objectid")(Joi);
 const _ = require("lodash");
 const moment = require("moment");

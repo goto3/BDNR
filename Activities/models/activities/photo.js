@@ -1,4 +1,4 @@
-const Joi = require("Joi");
+const Joi = require("joi");
 
 validator = {
 	url: Joi.string().min(1).required(),
