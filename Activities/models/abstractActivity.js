@@ -24,7 +24,7 @@ module.exports.create = async (data) => {
 	data.date = moment(data.date, validDateFormats).toDate();
 	const activity = _.pick(data, Object.keys(validatorObject));
 	const result = await database.saveActivity(activity);
-	mq.pubActivityCreated(event);
+	mq.pubActivityCreated(result);
 	return result;
 };
 
