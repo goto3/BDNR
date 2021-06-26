@@ -18,7 +18,7 @@ module.exports.findAllActivities = async () => {
 	return await _db.collection("activities").find().toArray();
 };
 
-module.exports.findActivitiesbyUser = async (data) => {
+module.exports.findAllActivitiesbyUser = async (data) => {
 	const _db = await db.getDb();
 	return await _db
 		.collection("activities")
@@ -26,7 +26,12 @@ module.exports.findActivitiesbyUser = async (data) => {
 		.toArray();
 };
 
-module.exports.findAllGpsData = async (data) => {
+module.exports.findAllGpsData = async () => {
+	const _db = await db.getDb();
+	return await _db.collection("gpsdata").find().toArray();
+};
+
+module.exports.findAllGpsDataByActivity = async (data) => {
 	const _db = await db.getDb();
 	return await _db
 		.collection("gpsdata")

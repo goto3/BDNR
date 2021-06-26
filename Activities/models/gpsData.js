@@ -3,6 +3,7 @@ const Joi = require("Joi").extend(require("@joi/date"));
 Joi.objectId = require("joi-objectid")(Joi);
 const _ = require("lodash");
 const moment = require("moment");
+const mongo = require("mongodb");
 
 const validDateFormats = config.get("validDateFormats");
 const database = require("../database/handler");
@@ -36,6 +37,7 @@ module.exports.create = async (data) => {
 
 	data.timestamp = moment(data.timestamp, validDateFormats).toDate();
 	const gpsData = _.pick(data, Object.keys(validatorObject));
+	gpsData.activityId = new mongo.ObjectID(gpsData.activityId);
 	const result = await database.saveGpsData(gpsData);
 
 	return result;
