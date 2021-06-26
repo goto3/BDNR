@@ -22,7 +22,7 @@ module.exports.findAllActivitiesbyUser = async (data) => {
 	const _db = await db.getDb();
 	return await _db
 		.collection("activities")
-		.find({ userId: new mongo.ObjectID(data) })
+		.find({ userId: parseInt(data) })
 		.toArray();
 };
 

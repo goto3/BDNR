@@ -13,7 +13,7 @@ const DeferBindingError = require("../errors/deferBindingError");
 
 var validatorObject = {
 	type: Joi.string().required(),
-	userId: Joi.objectId().strict().required(),
+	userId: Joi.number().strict().required(),
 	date: Joi.date().format(validDateFormats).required(),
 	title: Joi.string().min(1).max(100).required(),
 };
@@ -23,7 +23,6 @@ module.exports.create = async (data) => {
 	validate(data);
 	data.date = moment(data.date, validDateFormats).toDate();
 	const activity = _.pick(data, Object.keys(validatorObject));
-	activity.userId = new mongo.ObjectID(activity.userId);
 	const result = await database.saveActivity(activity);
 	return result;
 };
