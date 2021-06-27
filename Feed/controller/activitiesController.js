@@ -2,37 +2,27 @@ const db = require("../start/db");
 const subscribersLib = require("../lib/subscribers/subscribers");
 
 module.exports.handleActivityCreated = async function handleActivityCreated(message) {
-	const subscribers = subscribersLib.findById(message.userId);
-	console.log(subscribers);
+	let subscribers = subscribersLib.findById(message.userId);
+
+	const batch = db.client.batch();
 	for (subscriber of subscribers) {
-		db.client.get(subscriber.id, function (err, reply) {
-			if (err) throw err;
-			if (!reply) {
-				db.client.set(subscriber.id.toString(), JSON.stringify([message]));
-			} else {
-				reply = JSON.parse(reply);
-				let i = 0;
-				while (reply[i].date > message.date) {
-					i++; //insertPosition
-				}
-				reply.splice(i, 0, message);
-				db.client.set(subscriber.id, JSON.stringify(reply));
-			}
-		});
+		batch.get(`feed:${subscriber.id}`);
 	}
 
-	db.client.get(message.userId, function (err, reply) {
-		if (err) throw err;
-		if (!reply) {
-			db.client.set(message.userId.toString(), JSON.stringify([message]));
-		} else {
-			reply = JSON.parse(reply);
-			let j = 0;
-			while (reply[j].date > message.date) {
-				j++; //insertPosition
+	batch.exec((err, replies) => {
+		replies.forEach((r, it) => {
+			if (err) throw err;
+			if (!r) {
+				db.client.set(`feed:${subscribers[it].id.toString()}`, JSON.stringify([message]));
+			} else {
+				r = JSON.parse(r);
+				let i = 0;
+				while (r[i].date > message.date) {
+					i++; //insertPosition
+				}
+				r.splice(i, 0, message);
+				db.client.set(`feed:${subscribers[it].id.toString()}`, JSON.stringify(r));
 			}
-			reply.splice(j, 0, message);
-			db.client.set(message.userId, JSON.stringify(reply));
-		}
+		});
 	});
 };
