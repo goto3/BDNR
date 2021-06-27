@@ -1,0 +1,48 @@
+{
+	"port": "4301",
+	"redisConnection": {
+		"redis": {
+			"host": "127.0.0.1",
+			"port": 6379
+		}
+	},
+	"subscribersData": [
+		{
+			"id": 0,
+			"subscribers": [
+				{
+					"id": 1
+				},
+				{
+					"id": 2
+				},
+				{
+					"id": 3
+				}
+			]
+		},
+		{
+			"id": 1,
+			"subscribers": [
+				{
+					"id": 2
+				},
+				{
+					"id": 3
+				}
+			]
+		},
+		{
+			"id": 2,
+			"subscribers": [
+				{
+					"id": 1
+				}
+			]
+		},
+		{
+			"id": 3,
+			"subscribers": []
+		}
+	]
+}
