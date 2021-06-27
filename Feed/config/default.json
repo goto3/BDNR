@@ -8,8 +8,8 @@
 	},
 	"subscribersData": [
 		{
-			"id": 0,
-			"subscribers": [
+			"key": 0,
+			"value": [
 				{
 					"id": 1
 				},
@@ -22,8 +22,8 @@
 			]
 		},
 		{
-			"id": 1,
-			"subscribers": [
+			"key": 1,
+			"value": [
 				{
 					"id": 2
 				},
@@ -33,16 +33,16 @@
 			]
 		},
 		{
-			"id": 2,
-			"subscribers": [
+			"key": 2,
+			"value": [
 				{
 					"id": 1
 				}
 			]
 		},
 		{
-			"id": 3,
-			"subscribers": []
+			"key": 3,
+			"value": []
 		}
 	]
 }
