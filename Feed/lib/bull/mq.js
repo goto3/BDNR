@@ -9,7 +9,6 @@ var _activityCreatedQueue;
 (async () => {
 	_activityCreatedQueue = new Queue("activityCreated", redisConnection);
 	_activityCreatedQueue.process(async (job) => {
-		console.log(job.data);
 		controller.handleActivityCreated(job.data);
 	});
 })();
