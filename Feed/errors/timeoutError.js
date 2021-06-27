@@ -11,7 +11,7 @@ class TimeoutError extends ApiError {
 	body() {
 		return {
 			ErrorType: `Timeout error`,
-			Message: `Could not process reservation in time, try again later.`,
+			Message: `Could not process request in time, try again later.`,
 		};
 	}
 }

@@ -9,32 +9,36 @@
 	"subscribersData": [
 		{
 			"id": 0,
-			"subscribers": [{
-				"id": 1
-			},
-			{
-				"id": 2
-			},
-			{
-				"id": 3
-			}]
+			"subscribers": [
+				{
+					"id": 1
+				},
+				{
+					"id": 2
+				},
+				{
+					"id": 3
+				}
+			]
 		},
 		{
 			"id": 1,
 			"subscribers": [
-			{
-				"id": 2
-			},
-			{
-				"id": 3
-			}]
+				{
+					"id": 2
+				},
+				{
+					"id": 3
+				}
+			]
 		},
 		{
 			"id": 2,
 			"subscribers": [
-			{
-				"id": 1
-			}]
+				{
+					"id": 1
+				}
+			]
 		},
 		{
 			"id": 3,

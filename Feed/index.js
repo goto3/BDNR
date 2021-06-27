@@ -3,10 +3,11 @@ const config = require("config");
 require("express-async-errors");
 const app = express();
 
-require ("./start/db");
-require("./lib/bull/mq")
+require("./start/db");
+require("./lib/bull/mq");
 require("./start/routes")(app);
 
 const port = process.env.PORT || config.get("port");
 const server = app.listen(port, () => console.log(`Express: Listening on port ${port}...`));
 
+module.exports = server;

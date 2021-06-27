@@ -1,6 +1,6 @@
-config = require ("config");
+config = require("config");
 const data = config.get("subscribersData");
 
-module.exports.findById = function (id){
-    return data.map(v => v.id === id)
-}
+module.exports.findById = function (id) {
+	return data.map((v) => v.id === id);
+};

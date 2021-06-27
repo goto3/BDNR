@@ -2,7 +2,7 @@ const config = require("config");
 const Queue = require("bull");
 const controller = require("../../controller/activitiesController");
 
-var redisConnection = {...config.get("redisConnection")}
+var redisConnection = { ...config.get("redisConnection") };
 
 var _activityCreatedQueue;
 
@@ -12,4 +12,3 @@ var _activityCreatedQueue;
 		controller.handleActivityCreated(job.data);
 	});
 })();
-
