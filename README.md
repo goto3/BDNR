@@ -35,3 +35,23 @@ Sobre la ruta de instalación:
 $ npm i
 $ node index.js
 ```
+
+## Comandos de docker
+
+### MongoDb
+```
+$ docker pull mongo
+$ docker run --name mongo-bdnr -p 27017:27017 -d mongo:latest
+```
+
+### Redis
+```
+$ docker pull redis
+$ docker run --name redis-bdnr -p 6379:6379 -d redis
+```
+
+Para ejecutar comandos en la consola de redis (Redis-cli):
+```
+$ docker exec -i redis-bdnr redis-cli
+```
+
