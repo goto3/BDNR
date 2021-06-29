@@ -1,0 +1,29 @@
+{
+	"info": {
+		"_postman_id": "fc3d37be-79fe-4f1f-8848-46ab39458ba9",
+		"name": "Feed",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get feed",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:4301/api/feed/1",
+					"host": [
+						"localhost"
+					],
+					"port": "4301",
+					"path": [
+						"api",
+						"feed",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

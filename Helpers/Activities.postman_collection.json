@@ -1,0 +1,312 @@
+{
+	"info": {
+		"_postman_id": "96b1e7dd-f164-498b-a82a-4f9ebcc99127",
+		"name": "Activities",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Photo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"photo\",\r\n    \"userId\" : 2,\r\n    \"date\": \"23/03/1994 12:12:12\",\r\n    \"title\": \"asas\",\r\n    \"additionalData\": {\r\n        \"url\" : \"url\",\r\n        \"comment\" : \"comment\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:4300/api/activities",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4300",
+					"path": [
+						"api",
+						"activities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Publication",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"publication\",\r\n    \"userId\" : 3,\r\n    \"date\": \"23/03/1994 12:12:12\",\r\n    \"title\": \"asas\",\r\n    \"additionalData\": {\r\n        \"text\" : \"url\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:4300/api/activities",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4300",
+					"path": [
+						"api",
+						"activities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Exercise",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"exercise\",\r\n    \"userId\" : \"60d68c7bdff6fa15b41c9bb2\",\r\n    \"date\": \"23/03/1994 12:12:12\",\r\n    \"title\": \"title\",\r\n    \"additionalData\": {\r\n        \"type\" : \"url\",\r\n        \"elapsedTimeSeconds\": 5,\r\n        \"distance\": 5,\r\n        \"photoUrl\" : \"url\",\r\n        \"description\" : \"description\",\r\n        \"effort\": 4\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:4300/api/activities",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4300",
+					"path": [
+						"api",
+						"activities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Automatic Exercise",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"automaticExercise\",\r\n    \"userId\" : 1,\r\n    \"date\": \"26/06/2021 12:12:12\",\r\n    \"title\": \"title\",\r\n    \"additionalData\": {\r\n        \"type\" : \"url\",\r\n        \"elapsedTimeSeconds\": 5,\r\n        \"distance\": 5,\r\n        \"avgSpeed\" : \"description\",\r\n        \"inProgress\": true        \r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:4300/api/activities",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4300",
+					"path": [
+						"api",
+						"activities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GPSdata",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"activityId\" : \"60d75fba88a6a12d3803c21c\",\r\n    \"timestamp\": \"26/06/2021 12:14:16\",\r\n    \"distance\": 3,\r\n    \"avgSpeed\": \"555555\",\r\n    \"longitude\": 1.2,\r\n    \"latitude\": 1,\r\n    \"sensorData\": {\r\n        \"averageCadency\": 10,\r\n        \"totalCalories\": 50\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:4300/api/gpsData",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4300",
+					"path": [
+						"api",
+						"gpsData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all Activities",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:4300/api/activities",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4300",
+					"path": [
+						"api",
+						"activities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Activities by User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:4300/api/activities?userId=60d68c7bdff6fa15b41c9bb2",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4300",
+					"path": [
+						"api",
+						"activities"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "60d68c7bdff6fa15b41c9bb2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all GPS data",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:4300/api/gpsdata",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4300",
+					"path": [
+						"api",
+						"gpsdata"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get GPS data by ActivityId",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:4300/api/gpsdata?activityId=60d75fba88a6a12d3803c21c",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4300",
+					"path": [
+						"api",
+						"gpsdata"
+					],
+					"query": [
+						{
+							"key": "activityId",
+							"value": "60d75fba88a6a12d3803c21c"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
